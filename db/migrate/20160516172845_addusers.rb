@@ -10,7 +10,7 @@ class Addusers < ActiveRecord::Migration
     admin.save!
   end
 
-  def down
+  def downe
     admin = User.find_by_email "admin@example.com"
     User.delete admin
   end
