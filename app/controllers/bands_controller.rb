@@ -9,14 +9,17 @@ class BandsController < ApplicationController
   end
 
   def new
+    authorize! :new, @band
     @band = Band.new
   end
 
   def edit
+    authorize! :update, @band
     @band = Band.find(params[:id])
   end
 
   def create
+    authorize! :new, @band
     params[:band][:genre_ids] ? genres = params[:band][:genre_ids] : genres = Array.new
     @band = Band.new(band_params) if Band.check_genres(genres)
     
@@ -29,6 +32,7 @@ class BandsController < ApplicationController
   end
 
   def update
+    authorize! :update, @band
     @band = Band.find(params[:id])
     Band.check_genres(params[:band][:genre_ids])
     if @band.update_attributes(band_params)
@@ -39,6 +43,7 @@ class BandsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @band
     @band = Band.find(params[:id])
     @band.destroy
   end

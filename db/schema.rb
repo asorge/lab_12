@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516134712) do
+ActiveRecord::Schema.define(version: 20160516172845) do
 
   create_table "band_genres", force: true do |t|
     t.integer  "band_id"
